@@ -1,11 +1,11 @@
 class Auth
-  algorithm = 'HS256'
   class << self
-    def issues(payload)
+    ALGORITHM = 'HS256'
+    def issue(payload)
       JWT.encode(
         payload,
         auth_secret,
-        algorithm
+        ALGORITHM
       )
     end
 
