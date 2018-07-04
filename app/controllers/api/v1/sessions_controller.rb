@@ -5,7 +5,6 @@ module Api::V1
     attr_reader :user
 
     def create
-      binding.pry
       if user_authenticate
         jwt = Auth.issue({user: user.id})
         render json: {jwt: jwt}
@@ -19,11 +18,15 @@ module Api::V1
     private
 
     def user_authenticate
-      user.authenticate(params[:password])
+      user.authenticate(user_params[:password])
     end
 
     def find_user
-      @user = User.find_by(email: params[:email])
+      @user = User.find_by(email: user_params[:email])
+    end
+
+    def user_params
+      params.permit(:email, :password)
     end
   end
 end

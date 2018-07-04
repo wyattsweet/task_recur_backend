@@ -6,12 +6,13 @@ module Api::V1
     end
 
     def create
+
     end
 
     private
 
     def get_users
-      User.all.select(:id, :email, :name)
+      @user = User.all.select(:id, :email, :name)
     end
   end
 end
