@@ -6,7 +6,7 @@ module Api::V1
 
     def create
       if user_authenticate
-        jwt = Auth.issue({user: user.id})
+        jwt = Auth.issue(user.id)
         render json: {jwt: jwt}
       else
         render status: 401, json: {
@@ -18,7 +18,7 @@ module Api::V1
     private
 
     def user_authenticate
-      user.authenticate(user_params[:password])
+      user&.authenticate(user_params[:password])
     end
 
     def find_user

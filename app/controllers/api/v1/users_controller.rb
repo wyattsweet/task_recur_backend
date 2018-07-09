@@ -8,7 +8,7 @@ module Api::V1
     def create
       user = User.create(new_user_params)
       if user.valid?
-        jwt = Auth.issue({ user: user.id })
+        jwt = Auth.issue(user.id)
         render :json => { jwt: jwt }
       else
         render status: 400, json: {
