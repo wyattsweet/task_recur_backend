@@ -8,7 +8,7 @@ module Api::V1
     end
 
     def show
-      # return the current_user
+      render :json => { user: get_user }
     end
 
     def create
@@ -27,6 +27,10 @@ module Api::V1
 
     def new_user_params
       params.permit(:email, :password)
+    end
+
+    def get_user
+      current_user.attributes.slice('id', 'email', 'created_at', 'updated_at', 'tier', 'name')
     end
 
     def get_users
