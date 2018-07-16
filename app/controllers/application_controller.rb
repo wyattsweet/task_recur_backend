@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  attr_reader :current_user
 
   def authenticate
     render json: { message: 'unauthorized' }, status: 401 unless logged_in?

@@ -1,8 +1,14 @@
 module Api::V1
   class UsersController < ApplicationController
+    before_action :authenticate, only: [:index, :show]
     def index
+      binding.pry
       @users = get_users
       render :json => { users: @users }
+    end
+
+    def show
+      # return the current_user
     end
 
     def create

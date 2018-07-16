@@ -2,7 +2,8 @@ class Auth
   class << self
     ALGORITHM = 'HS256'
     def issue(user_id)
-      exp = Time.now + 7 * 86400
+      # expire token after 7 days
+      exp = Time.now.to_i + (7 * 86400)
       payload = { user: user_id, exp: exp }
       JWT.encode(
         payload,
