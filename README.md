@@ -1,7 +1,6 @@
-# README
+# Task Recur – Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the backend API for [Task Recur](https://github.com/wyattsweet/task_recur)
 
 Things you may want to cover:
 
